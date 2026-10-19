@@ -122,10 +122,10 @@ export function Dashboard() {
         </label>
         <div className="card-2 flex items-center gap-3 py-2 pl-2 pr-4">
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-sm font-bold text-accent-ink" aria-hidden="true">
-            AO
+            MT
           </span>
           <div className="leading-tight">
-            <p className="text-sm font-semibold">Ada Okafor</p>
+            <p className="text-sm font-semibold">Maya Thompson</p>
             <p className="text-xs text-muted">Personal account</p>
           </div>
           <ChevronDown size={16} aria-hidden="true" className="text-muted" />
@@ -142,7 +142,7 @@ export function Dashboard() {
         <div>
           <p className="text-sm text-muted">{todayLabel()}</p>
           <h1 className="mt-1 font-display text-[2.1rem] font-semibold leading-[1.05] tracking-tight md:text-5xl">
-            {greeting()}, <span className="text-accent">Ada.</span>
+            {greeting()}, <span className="text-accent">Maya.</span>
           </h1>
           <p className="mt-3 hidden max-w-md text-muted lg:block">
             Stay on top of your bills, airtime and data. Fast, secure and reliable.
