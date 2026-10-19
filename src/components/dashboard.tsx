@@ -11,14 +11,9 @@ import {
   ChevronRight,
   Eye,
   EyeOff,
-  MoreHorizontal,
   Plus,
-  Receipt,
   Search,
-  Smartphone,
   Sparkles,
-  Tv,
-  Wifi,
 } from "lucide-react";
 import { useFluxStore } from "@/lib/store";
 import { formatNaira } from "@/lib/format";
@@ -145,7 +140,7 @@ export function Dashboard() {
         <div className="relative overflow-hidden card p-6 md:p-7">
           <img
             src="/brand/aurora.webp"
-            alt=""
+            alt="aurora"
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
           />
