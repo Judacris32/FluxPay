@@ -41,41 +41,43 @@ export function BillersView() {
         <p className="mt-2 text-muted">Keep your meters, lines and smart cards ready to pay.</p>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
-        <ul className="flex flex-col gap-3">
+      <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
+        <ul className="flex min-w-0 flex-col gap-3">
           {billers.length === 0 && <li className="card-2 p-6 text-muted">No saved billers yet.</li>}
           {billers.map((b) => {
             const provider = getProvider(b.providerId);
             return (
-              <li key={b.id} className="card-2 flex items-center gap-4 p-4">
+              <li key={b.id} className="card-2 flex min-w-0 flex-wrap items-center gap-4 p-4">
                 <ServiceBadge service={b.service} size="lg" />
-                <div className="min-w-0 flex-1">
-                  <p className="font-semibold">{b.nickname}</p>
-                  <p className="truncate text-sm text-muted tabular-nums">
+                <div className="min-w-[11rem] flex-1">
+                  <p className="font-semibold break-words">{b.nickname}</p>
+                  <p className="break-words text-sm text-muted tabular-nums">
                     {b.account} · {provider?.name}
                   </p>
                 </div>
-                <Link
-                  href={`/pay/${b.service}?provider=${b.providerId}&account=${b.account.replace(/\s/g, "")}`}
-                  className="btn-ghost h-10 px-4"
-                >
-                  Pay <ArrowRight size={15} aria-hidden="true" />
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => removeBiller(b.id)}
-                  aria-label={`Remove ${b.nickname}`}
-                  className="flex h-10 w-10 items-center justify-center rounded-full text-muted transition-colors hover:text-danger"
-                >
-                  <Trash2 size={17} />
-                </button>
+                <div className="ml-auto flex items-center gap-2">
+                  <Link
+                    href={`/pay/${b.service}?provider=${b.providerId}&account=${b.account.replace(/\s/g, "")}`}
+                    className="btn-ghost h-10 px-4"
+                  >
+                    Pay <ArrowRight size={15} aria-hidden="true" />
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => removeBiller(b.id)}
+                    aria-label={`Remove ${b.nickname}`}
+                    className="flex h-10 w-10 items-center justify-center rounded-full text-muted transition-colors hover:text-danger"
+                  >
+                    <Trash2 size={17} />
+                  </button>
+                </div>
               </li>
             );
           })}
         </ul>
 
         <form
-          className="card flex flex-col gap-5 p-6"
+          className="card flex min-w-0 flex-col gap-5 p-6"
           onSubmit={(e) => {
             e.preventDefault();
             if (!valid) return;
