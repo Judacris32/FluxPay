@@ -11,9 +11,14 @@ import {
   ChevronRight,
   Eye,
   EyeOff,
+  MoreHorizontal,
   Plus,
+  Receipt,
   Search,
+  Smartphone,
   Sparkles,
+  Tv,
+  Wifi,
 } from "lucide-react";
 import { useFluxStore } from "@/lib/store";
 import { formatNaira } from "@/lib/format";
@@ -38,6 +43,13 @@ const TILE_IMAGE: Record<ServiceSlug, string> = {
   airtime: "/brand/airtime.webp",
 };
 
+const QUICK_ACTIONS = [
+  { label: "Pay a bill", href: "/pay", icon: Receipt },
+  { label: "Buy airtime", href: "/pay/airtime", icon: Smartphone },
+  { label: "Buy data", href: "/pay/data", icon: Wifi },
+  { label: "Cable TV", href: "/pay/cable", icon: Tv },
+  { label: "More", href: "/billers", icon: MoreHorizontal },
+];
 
 const PERIODS = [
   { id: "6M", label: "6 Months", months: 6 },
@@ -140,7 +152,7 @@ export function Dashboard() {
         <div className="relative overflow-hidden card p-6 md:p-7">
           <img
             src="/brand/aurora.webp"
-            alt="aurora"
+            alt=""
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
           />
@@ -177,6 +189,24 @@ export function Dashboard() {
         </div>
       </motion.section>
 
+      {/* Quick actions (tablet and desktop) */}
+      <nav aria-label="Quick actions" className="hidden grid-cols-5 gap-3 md:grid">
+        {QUICK_ACTIONS.map((a, i) => {
+          const Icon = a.icon;
+          return (
+            <Link
+              key={a.label}
+              href={a.href}
+              className={`flex flex-col items-center gap-3 rounded-[20px] border px-3 py-5 text-sm font-semibold transition-colors ${
+                i === 0 ? "border-accent/60 bg-accent/[0.06]" : "card-2 hover:border-line-strong"
+              }`}
+            >
+              <Icon size={22} className="text-accent" aria-hidden="true" />
+              {a.label}
+            </Link>
+          );
+        })}
+      </nav>
 
       {/* Quick pay */}
       <section aria-labelledby="quick-pay" className="flex flex-col gap-4">
